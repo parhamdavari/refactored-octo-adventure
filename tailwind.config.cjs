@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        accent: {
+          turquoise: "#00d4aa",
+          purple: "#7c3aed",
+          ocean: "#0a1628",
+        },
       },
       textColor: {
         default: "var(--color-text)",
@@ -21,6 +26,12 @@ module.exports = {
       },
       borderColor: {
         default: "var(--color-border)",
+      },
+      backgroundImage: {
+        "payesh-gradient":
+          "linear-gradient(135deg, #00d4aa 0%, #7c3aed 50%, #a855f7 100%)",
+        "payesh-glow":
+          "radial-gradient(ellipse at center, rgba(0, 212, 170, 0.15) 0%, transparent 70%)",
       },
     },
   },

@@ -1,89 +1,73 @@
 ---
-import CompatibilityList from "~/components/compatibility-list.astro";
 import ContentSection from "~/components/content-section.astro";
-import type { CompatibilityItem } from "~/types";
 
-const frameworks: Array<CompatibilityItem> = [
-  {
-    title: "React",
-    icon: "frameworks/react",
-    url: "https://reactjs.org/",
-  },
-  {
-    title: "Preact",
-    icon: "frameworks/preact",
-    url: "https://preactjs.com/",
-  },
-  {
-    title: "Svelte",
-    icon: "frameworks/svelte",
-    url: "https://svelte.dev/",
-  },
-  {
-    title: "Vue",
-    icon: "frameworks/vue",
-    url: "https://vuejs.org/",
-  },
-  {
-    title: "Solid",
-    icon: "frameworks/solid",
-    url: "https://www.solidjs.com/",
-  },
-  {
-    title: "Lit",
-    icon: "frameworks/lit",
-    url: "https://lit.dev/",
-  },
+// Added 'icon' paths. Make sure these match the exact filenames
+// and extensions (.svg, .png, etc.) you have in your public/ folder.
+const exchanges = [
+  { name: "Binance", color: "#F0B90B", icon: "/binance.jpeg" },
+  { name: "KuCoin", color: "#23AF5A", icon: "/kucoin.png" },
+  { name: "Toobit", color: "#00D4AA", icon: "/toobit.jpeg" },
+  { name: "BingX", color: "#00D4AA", icon: "/bingx.jpeg" },
 ];
 
-const platforms: Array<CompatibilityItem> = [
-  {
-    title: "Netlify",
-    icon: "platforms/netlify",
-    url: "https://www.netlify.com/",
-  },
-  {
-    title: "Vercel",
-    icon: "platforms/vercel",
-    url: "https://vercel.com/",
-  },
-  {
-    title: "Cloudflare",
-    icon: "fa-brands:cloudflare",
-    url: "https://pages.cloudflare.com/",
-  },
-  {
-    title: "Render",
-    icon: "platforms/render",
-    url: "https://render.com/",
-  },
-  {
-    title: "GitHub",
-    icon: "fa-brands:github",
-    url: "https://pages.github.com/",
-  },
-  {
-    title: "GitLab",
-    icon: "fa-brands:gitlab",
-    url: "https://docs.gitlab.com/ee/user/project/pages/",
-  },
+const networks = [
+  { name: "BSC / BEP20", color: "#F0B90B", icon: "/bsc.svg" },
+  { name: "TRC20", color: "#FF0013", icon: "/tron.svg" },
 ];
 ---
 
-<ContentSection title="Compatibility" id="compatibility">
+<ContentSection title="Supported Exchanges & Networks" id="compatibility">
   <Fragment slot="lead">
-    Astro <span class="text-primary">plays nice</span>. Bring your own UI{" "}
-    <span class="text-primary">framework</span>
-    and deploy to your favorite <span class="text-primary">platform</span>.
+    Connect to <span class="text-primary">major exchanges</span> and monitor deposits
+    across <span class="text-primary">popular networks</span>.
   </Fragment>
-  <CompatibilityList
-    items={frameworks}
-    title="Frameworks"
-    url="https://docs.astro.build/core-concepts/framework-components/"
-  />
-  <CompatibilityList
-    items={platforms}
-    title="Platforms"
-    url="https://docs.astro.build/guides/deploy/"
-  />
+
+  <div class="w-full max-w-5xl space-y-8">
+    <div class="glow-card p-8">
+      <h3
+        class="mb-6 text-center font-extrabold uppercase tracking-widest text-offset text-sm"
+      >
+        Supported Exchanges
+      </h3>
+      <ul class="grid grid-cols-2 gap-6 md:grid-cols-4">
+        {
+          exchanges.map(({ name, icon }) => (
+            <li class="flex flex-col items-center gap-3">
+              <div class="flex size-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:border-white/20 hover:bg-white/10">
+                <img
+                  src={icon}
+                  alt={`${name} logo`}
+                  class="h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <span class="font-semibold text-offset text-sm">{name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <!-- Networks -->
+    <div class="glow-card p-8">
+      <h3
+        class="mb-6 text-center font-extrabold uppercase tracking-widest text-offset text-sm"
+      >
+        Supported Networks
+      </h3>
+      <ul class="flex flex-wrap items-center justify-center gap-8">
+        {
+          networks.map(({ name, color }) => (
+            <li class="flex items-center gap-3">
+              <div class="flex size-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2.5 transition-all duration-300 hover:border-white/20 hover:bg-white/10">
+                <span class="font-extrabold text-xs" style={`color: ${color}`}>
+                  {name.split(" ")[0]}
+                </span>
+              </div>
+              <span class="font-semibold text-offset text-sm">{name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </ContentSection>

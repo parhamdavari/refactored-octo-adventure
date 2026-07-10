@@ -1,49 +1,91 @@
 ---
-import { Icon } from "astro-icon/components";
-import HeroImage from "~/components/hero-image.astro";
-import type { FooterLink } from "~/types";
-
-const links: Array<FooterLink> = [
+const socialLinks = [
   {
-    url: "https://astro.build/",
-    description: "Astro's official website",
-    icon: "mdi:home",
+    url: "https://t.me/PayeshBot",
+    label: "Telegram Bot",
+    icon: "telegram",
   },
   {
-    url: "https://github.com/mhyfritz/astro-landing-page",
-    description: "View source on GitHub",
-    icon: "fa-brands:github-alt",
-  },
-  {
-    url: "https://astro.build/chat",
-    description: "Astro on Discord",
-    icon: "fa-brands:discord",
-  },
-  {
-    url: "https://twitter.com/astrodotbuild",
-    description: "Astro on Twitter",
-    icon: "fa-brands:twitter",
+    url: "https://t.me/PayeshChannel",
+    label: "Telegram Channel",
+    icon: "channel",
   },
 ];
 ---
 
-<footer class="relative flex h-64 items-center justify-center">
-  <div class="absolute inset-0 overflow-hidden opacity-40">
-    <HeroImage />
-  </div>
-  <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
-    {
-      links.map((link) => (
-        <li>
-          <a
-            class="flex size-16 items-center justify-center rounded-full border-2 border-current p-4"
-            href={link.url}
+<footer class="relative border-t border-white/5 bg-black/30">
+  <div class="mx-auto max-w-6xl px-8 py-12">
+    <div class="flex flex-col items-center justify-center gap-8 md:flex-row">
+      <!-- Logo & Copyright -->
+      <div class="flex items-center gap-3">
+        <!-- <span
+          class="bg-gradient-to-r from-emerald-400 to-purple-400 bg-clip-text font-extrabold text-transparent text-lg"
+        >
+          PAYESH
+        </span> -->
+        <span class="text-offset text-sm">
+          &copy; {new Date().getFullYear()} Payesh. All rights reserved.
+        </span>
+      </div>
+
+      <!-- Social Links -->
+      <!-- <div class="flex items-center gap-4">
+        <a
+          href="https://t.me/PayeshBot"
+          class="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:border-[#229ed9]/50 hover:bg-[#229ed9]/10"
+          aria-label="Telegram Bot"
+        >
+          <svg
+            class="size-5 text-[#229ed9]"
+            viewBox="0 0 24 24"
+            fill="currentColor"
           >
-            <span class="sr-only">{link.description}</span>
-            <Icon class="size-full" name={link.icon} />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+            <path
+              d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+            ></path>
+          </svg>
+        </a>
+        <a
+          href="https://t.me/PayeshChannel"
+          class="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:border-[#229ed9]/50 hover:bg-[#229ed9]/10"
+          aria-label="Telegram Channel"
+        >
+          <svg
+            class="size-5 text-[#229ed9]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M22 2 11 13"></path>
+            <path
+              d="m22 2-7 20-4-9-9-4Z"
+            ></path>
+          </svg>
+        </a>
+        <a
+          href="https://instagram.com/payesh"
+          class="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:border-pink-500/50 hover:bg-pink-500/10"
+          aria-label="Instagram"
+        >
+          <svg
+            class="size-5 text-pink-400"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+            ></path>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+          </svg>
+        </a>
+      </div> -->
+    </div>
+  </div>
 </footer>

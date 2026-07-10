@@ -1,64 +1,117 @@
 ---
-import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
-import type { FeatureItem } from "~/types";
 
-const features: Array<FeatureItem> = [
+const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Multi-Exchange Monitoring",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "mdi:handshake",
+      "Watch Binance, KuCoin, Toobit, and BingX simultaneously from a single Telegram bot.",
+    icon: "monitor",
+    color: "from-emerald-500 to-teal-500",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Instant Alerts",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "mdi:feather",
+      "Real-time HTML-formatted Telegram alerts the second a deposit lands in your account.",
+    icon: "alert",
+    color: "from-violet-500 to-purple-500",
   },
   {
-    title: "On-Demand Components",
+    title: "Smart Reports",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page. If the user never sees it, they never load it.",
-    icon: "mdi:directions-fork",
+      "Daily, weekly, and monthly reports with live USDT value conversion for all deposits.",
+    icon: "report",
+    color: "from-cyan-500 to-blue-500",
   },
   {
-    title: "Broad Integration",
+    title: "Guaranteed Security",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any of your favorite npm packages.",
-    icon: "mdi:graph",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication.",
-    icon: "mdi:search-web",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "mdi:account-group",
+      "100% secure. Uses read-only API keys. We never ask for withdrawal permissions.",
+    icon: "shield",
+    color: "from-amber-500 to-orange-500",
   },
 ];
 ---
 
 <ContentSection title="Features" id="features">
   <Fragment slot="lead">
-    Astro comes <span class="text-primary">batteries included</span>. It takes
-    the best parts of
-    <span class="text-primary">state-of-the-art</span>
-    tools and adds its own <span class="text-primary">innovations</span>.
+    Everything you need to monitor your crypto deposits.
+    <span class="text-primary">Real-time</span>,
+    <span class="text-primary">secure</span>, and
+    <span class="text-primary">Telegram-native</span>.
   </Fragment>
-  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+  <ul class="grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
     {
-      features.map(({ title, description, icon }) => (
-        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
-          <div class="size-16 rounded-full border-2 border-current p-3">
-            <Icon name={icon} class="size-full" />
+      features.map(({ title, description, icon, color }) => (
+        <li class="glow-card group p-8 transition-all duration-300 hover:border-primary/20">
+          <div class="mb-4 flex items-center gap-4">
+            <div
+              class={`flex size-12 items-center justify-center rounded-xl bg-gradient-to-br ${color} p-2.5`}
+            >
+              {icon === "monitor" && (
+                <svg
+                  class="size-full text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              )}
+              {icon === "alert" && (
+                <svg
+                  class="size-full text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+              )}
+              {icon === "report" && (
+                <svg
+                  class="size-full text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+              )}
+              {icon === "shield" && (
+                <svg
+                  class="size-full text-white"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+              )}
+            </div>
+            <h3 class="font-extrabold text-xl">{title}</h3>
           </div>
-          <p class="text-center font-extrabold text-xl">{title}</p>
-          <p class="text-center text-offset text-sm">{description}</p>
+          <p class="leading-relaxed text-offset">{description}</p>
         </li>
       ))
     }

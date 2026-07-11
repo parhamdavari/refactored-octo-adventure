@@ -6,22 +6,32 @@ const plans = [
     name: "Free Trial",
     price: "$0",
     period: "3 days",
-    features: ["Full access to all features", "Up to 2 exchanges", "Instant Telegram alerts", "No credit card required"],
+    features: [
+      "Full access to all features",
+      "Up to 2 exchanges",
+      "Instant Telegram alerts",
+      "No credit card required",
+    ],
     message: "I'd like to start the free trial",
   },
   {
     name: "Monthly",
-    price: "5 USDT",
-    period: "/ 30 days",
-    features: ["Unlimited exchanges", "Instant Telegram alerts", "Daily, weekly & monthly reports", "Multi-exchange support", "BSC/BEP20 payment"],
+    price: "$5",
+    period: "/ month",
+    features: [
+      "Unlimited exchanges",
+      "Instant Telegram alerts",
+      "Daily, weekly & monthly reports",
+      "Multi-exchange support",
+    ],
     badge: "Most Popular",
     message: "I'd like to subscribe to the Monthly plan (5 USDT / 30 days)",
   },
   {
-    name: "Annual",
+    name: "Annually",
     price: "$40",
     period: "/ year",
-    features: ["Everything in Monthly", "Priority support", "Save $20 / year", "BSC/BEP20 payment"],
+    features: ["Everything in Monthly", "Priority support", "Save $20 / year"],
     badge: "Best Value",
     message: "I'd like to subscribe to the Annual plan ($40 / year)",
   },
@@ -40,7 +50,9 @@ const telegramUrl = (msg: string) =>
     {
       plans.map((plan, i) => (
         <li class="glow-card group flex flex-col p-8 transition-all duration-300 hover:border-white/20 hover:bg-white/10">
-          <span class={`mb-4 w-fit rounded-full px-3 py-1 font-semibold text-xs ${plan.badge ? "bg-primary/20 text-primary" : "invisible"}`}>
+          <span
+            class={`mb-4 w-fit rounded-full px-3 py-1 font-semibold text-xs ${plan.badge ? "bg-primary/20 text-primary" : "invisible"}`}
+          >
             {plan.badge || "placeholder"}
           </span>
           <h3 class="mb-2 font-extrabold text-default text-xl">{plan.name}</h3>
@@ -51,7 +63,15 @@ const telegramUrl = (msg: string) =>
           <ul class="mb-8 flex-1 space-y-3">
             {plan.features.map((f) => (
               <li class="flex items-start gap-2 text-sm">
-                <svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                  class="mt-0.5 size-4 shrink-0 text-primary"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 <span class="text-offset">{f}</span>
@@ -64,8 +84,8 @@ const telegramUrl = (msg: string) =>
             rel="noopener noreferrer"
             class={`block w-full rounded-xl py-3 text-center font-semibold transition-all duration-300 ${
               i === 1
-                ? "bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary/90"
-                : "border border-white/10 bg-white/5 text-default hover:border-primary/30 hover:bg-primary/10"
+                ? "shadow-primary/25 hover:bg-primary/90 bg-primary text-white shadow-lg"
+                : "hover:border-primary/30 hover:bg-primary/10 border border-white/10 bg-white/5 text-default"
             }`}
           >
             Get Started

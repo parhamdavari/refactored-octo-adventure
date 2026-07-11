@@ -1,5 +1,4 @@
 ---
-import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 
 const navItems: Array<NavItem> = [
@@ -11,7 +10,7 @@ const navItems: Array<NavItem> = [
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white bg-[#0a0e1a]/80 will-change-transform"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
     <h1 class="sr-only">Payesh</h1>
@@ -66,7 +65,6 @@ const navItems: Array<NavItem> = [
           <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path>
         </svg>
       </button>
-      <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
       <div class="fixed inset-0 bg-default px-8 py-4 text-default">
@@ -175,6 +173,7 @@ const navItems: Array<NavItem> = [
     @apply border-default text-default;
     background-color: rgba(10, 14, 26, 0.85);
     backdrop-filter: blur(12px);
+    will-change: transform;
   }
   .modal.is-open {
     @apply block;

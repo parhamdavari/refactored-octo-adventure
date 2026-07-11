@@ -1,13 +1,3 @@
-[data-theme="light"] {
-  --color-primary: #00b894;
-  --color-secondary: #6c5ce7;
-  --color-text: #1a1a2e;
-  --color-text-offset: #4a4a6a;
-  --color-background: #f8f9fc;
-  --color-background-offset: #eef0f5;
-  --color-border: #d1d5e0;
-}
-
 [data-theme="dark"] {
   --color-primary: #00d4aa;
   --color-secondary: #7c3aed;

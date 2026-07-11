@@ -1,0 +1,152 @@
+---
+import ContentSection from "~/components/content-section.astro";
+
+const steps = [
+  {
+    number: 1,
+    title: "Log in to Exchange",
+    description: "Sign in to your exchange and open API Management.",
+    color: "from-blue-500 to-indigo-500",
+    icon: "login",
+  },
+  {
+    number: 2,
+    title: "Create API Keys",
+    description: 'Create keys with <strong>read-only</strong> permission only.',
+    color: "from-violet-500 to-purple-500",
+    icon: "key",
+  },
+  {
+    number: 3,
+    title: "Store Keys Safely",
+    description: "Save both keys securely. Never share them publicly.",
+    color: "from-cyan-500 to-blue-500",
+    icon: "lock",
+  },
+  {
+    number: 4,
+    title: "Start the Bot",
+    description: 'Open Telegram, find <strong>@payeshappbot</strong>, tap Start.',
+    color: "from-emerald-500 to-teal-500",
+    icon: "bot",
+  },
+  {
+    number: 5,
+    title: "Send API Keys",
+    description: "Send your API Key and Secret Key to the bot.",
+    color: "from-amber-500 to-orange-500",
+    icon: "send",
+  },
+  {
+    number: 6,
+    title: "Create Channel",
+    description: "Create a Telegram channel for deposit alerts.",
+    color: "from-rose-500 to-pink-500",
+    icon: "channel",
+  },
+  {
+    number: 7,
+    title: "Add Bot as Admin",
+    description: 'Add <strong>@payeshappbot</strong> as admin with full access.',
+    color: "from-fuchsia-500 to-pink-500",
+    icon: "admin",
+  },
+  {
+    number: 8,
+    title: "Forward a Message",
+    description: "Forward any message from your channel to the bot.",
+    color: "from-teal-500 to-green-500",
+    icon: "forward",
+  },
+  {
+    number: 9,
+    title: "You're All Set",
+    description: "Payesh will now send instant deposit alerts!",
+    color: "from-green-500 to-emerald-500",
+    icon: "check",
+  },
+];
+---
+
+<ContentSection title="Getting Started" id="tutorial">
+  <Fragment slot="lead">
+    Connect your exchange to Payesh in <span class="text-primary">9 simple steps</span>.
+  </Fragment>
+
+  <div class="glow-card w-full max-w-5xl p-6 md:p-8">
+    <ol class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        steps.map(({ number, title, description, color, icon }) => (
+          <li class="flex items-start gap-3 rounded-xl p-3 transition-colors duration-200 hover:bg-white/5">
+            <div
+              class={`flex size-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${color} font-bold text-white text-xs shadow-md`}
+            >
+              {icon === "login" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                  <polyline points="10 17 15 12 10 7" />
+                  <line x1="15" y1="12" x2="3" y2="12" />
+                </svg>
+              )}
+              {icon === "key" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
+                </svg>
+              )}
+              {icon === "lock" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              )}
+              {icon === "bot" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="10" rx="2" />
+                  <circle cx="12" cy="5" r="2" />
+                  <path d="M12 7v4" />
+                  <line x1="8" y1="16" x2="8" y2="16" />
+                  <line x1="16" y1="16" x2="16" y2="16" />
+                </svg>
+              )}
+              {icon === "send" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              )}
+              {icon === "channel" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              )}
+              {icon === "admin" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              )}
+              {icon === "forward" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 17 20 12 15 7" />
+                  <path d="M4 18v-2a4 4 0 0 1 4-4h12" />
+                </svg>
+              )}
+              {icon === "check" && (
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              )}
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 class="font-semibold text-sm">
+                <span class="text-primary/50 mr-1.5">{number}.</span>
+                {title}
+              </h3>
+              <p class="mt-0.5 text-offset text-xs leading-snug" set:html={description} />
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</ContentSection>

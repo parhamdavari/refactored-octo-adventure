@@ -12,19 +12,11 @@ const navItems: Array<NavItem> = [
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white bg-[#0a0e1a]/80 will-change-transform"
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent bg-[#0a0e1a]/80 px-8 py-4 text-white will-change-transform"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
     <h1 class="sr-only">Payesh</h1>
-    <!-- <svg class="size-10" viewBox="0 0 627 894" fill="currentColor">
-      <path
-        d="M445.433 22.983c7.289 9.05 11.006 21.26 18.44 45.682l162.408 533.511a675.9 675.9 0 0 0-194.166-65.737l-105.744-357.34a13.763 13.763 0 0 0-26.408.041L195.5 536.259A675.8 675.8 0 0 0 .46 602.095L163.663 68.541c7.457-24.38 11.186-36.57 18.476-45.602A60 60 0 0 1 206.454 4.95C217.224.622 229.971.622 255.466.622h116.568c25.528 0 38.292 0 49.072 4.338a60 60 0 0 1 24.327 18.023"
-      ></path>
-      <path
-        fill="#FF5D01"
-        d="M464.867 627.566c-26.773 22.894-80.212 38.507-141.766 38.507-75.55 0-138.872-23.52-155.675-55.152-6.007 18.129-7.354 38.877-7.354 52.131 0 0-3.958 65.082 41.308 110.349 0-23.505 19.055-42.559 42.559-42.559 40.287 0 40.242 35.148 40.205 63.664l-.002 2.545c0 43.282 26.453 80.385 64.073 96.024-5.619-11.557-8.771-24.535-8.771-38.25 0-41.28 24.235-56.65 52.401-74.514 22.41-14.213 47.31-30.004 64.47-61.682 8.953-16.528 14.037-35.459 14.037-55.577 0-12.372-1.922-24.295-5.485-35.486"
-      ></path>
-    </svg> -->
+
     <span
       class="bg-gradient-to-r from-emerald-400 to-purple-400 bg-clip-text font-extrabold text-transparent text-lg"
     >
@@ -68,58 +60,58 @@ const navItems: Array<NavItem> = [
         </svg>
       </button>
     </div>
-    <div id="menu-modal" class="modal hidden" aria-hidden="true">
-      <div class="fixed inset-0 bg-default px-8 py-4 text-default">
-        <div class="space-y-4" role="dialog" aria-modal="true">
-          <header class="text-right">
-            <button
-              id="close-nav-button"
-              type="button"
-              class="btn"
-              aria-label="Close navigation"
-            >
-              <svg class="size-8" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                ></path>
-              </svg>
-            </button>
-          </header>
-          <div class="flex justify-center">
-            <svg class="size-16" viewBox="0 0 627 894" fill="currentColor">
-              <path
-                d="M445.433 22.983c7.289 9.05 11.006 21.26 18.44 45.682l162.408 533.511a675.9 675.9 0 0 0-194.166-65.737l-105.744-357.34a13.763 13.763 0 0 0-26.408.041L195.5 536.259A675.8 675.8 0 0 0 .46 602.095L163.663 68.541c7.457-24.38 11.186-36.57 18.476-45.602A60 60 0 0 1 206.454 4.95C217.224.622 229.971.622 255.466.622h116.568c25.528 0 38.292 0 49.072 4.338a60 60 0 0 1 24.327 18.023"
-              ></path>
-              <path
-                fill="#FF5D01"
-                d="M464.867 627.566c-26.773 22.894-80.212 38.507-141.766 38.507-75.55 0-138.872-23.52-155.675-55.152-6.007 18.129-7.354 38.877-7.354 52.131 0 0-3.958 65.082 41.308 110.349 0-23.505 19.055-42.559 42.559-42.559 40.287 0 40.242 35.148 40.205 63.664l-.002 2.545c0 43.282 26.453 80.385 64.073 96.024-5.619-11.557-8.771-24.535-8.771-38.25 0-41.28 24.235-56.65 52.401-74.514 22.41-14.213 47.31-30.004 64.47-61.682 8.953-16.528 14.037-35.459 14.037-55.577 0-12.372-1.922-24.295-5.485-35.486"
-              ></path>
-            </svg>
-          </div>
-          <nav>
-            <ul class="flex flex-col">
-              {
-                navItems.map(({ title, url }) => (
-                  <li>
-                    <a class="block py-4 text-center text-xl" href={url}>
-                      {title}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
-          <a
-            href="https://t.me/PayeshBot"
-            class="telegram-btn mx-auto flex w-full justify-center"
-          >
-            Start Free on Telegram
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
 </header>
+<div id="menu-modal" class="modal hidden" aria-hidden="true">
+  <div class="fixed inset-0 z-50 bg-default px-8 py-4 text-default">
+    <div class="space-y-4" role="dialog" aria-modal="true">
+      <header class="text-right">
+        <button
+          id="close-nav-button"
+          type="button"
+          class="btn"
+          aria-label="Close navigation"
+        >
+          <svg class="size-8" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            ></path>
+          </svg>
+        </button>
+      </header>
+      <div class="flex justify-center">
+        <svg class="size-16" viewBox="0 0 627 894" fill="currentColor">
+          <path
+            d="M445.433 22.983c7.289 9.05 11.006 21.26 18.44 45.682l162.408 533.511a675.9 675.9 0 0 0-194.166-65.737l-105.744-357.34a13.763 13.763 0 0 0-26.408.041L195.5 536.259A675.8 675.8 0 0 0 .46 602.095L163.663 68.541c7.457-24.38 11.186-36.57 18.476-45.602A60 60 0 0 1 206.454 4.95C217.224.622 229.971.622 255.466.622h116.568c25.528 0 38.292 0 49.072 4.338a60 60 0 0 1 24.327 18.023"
+          ></path>
+          <path
+            fill="#FF5D01"
+            d="M464.867 627.566c-26.773 22.894-80.212 38.507-141.766 38.507-75.55 0-138.872-23.52-155.675-55.152-6.007 18.129-7.354 38.877-7.354 52.131 0 0-3.958 65.082 41.308 110.349 0-23.505 19.055-42.559 42.559-42.559 40.287 0 40.242 35.148 40.205 63.664l-.002 2.545c0 43.282 26.453 80.385 64.073 96.024-5.619-11.557-8.771-24.535-8.771-38.25 0-41.28 24.235-56.65 52.401-74.514 22.41-14.213 47.31-30.004 64.47-61.682 8.953-16.528 14.037-35.459 14.037-55.577 0-12.372-1.922-24.295-5.485-35.486"
+          ></path>
+        </svg>
+      </div>
+      <nav>
+        <ul class="flex flex-col">
+          {
+            navItems.map(({ title, url }) => (
+              <li>
+                <a class="block py-4 text-center text-xl" href={url}>
+                  {title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <a
+        href="https://t.me/PayeshAppBot"
+        class="telegram-btn mx-auto flex w-full justify-center"
+      >
+        Open Bot
+      </a>
+    </div>
+  </div>
+</div>
 
 <script>
   import MicroModal from "micromodal";

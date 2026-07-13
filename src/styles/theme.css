@@ -7,3 +7,9 @@
   --color-background-offset: #111827;
   --color-border: #1e293b;
 }
+
+/* Persian (RTL) uses Vazirmatn; Latin falls back to Inter. */
+[dir="rtl"] {
+  font-family: "Vazirmatn Variable", "Inter Variable", ui-sans-serif, system-ui,
+    sans-serif;
+}

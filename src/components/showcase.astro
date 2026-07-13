@@ -1,33 +1,33 @@
 ---
 import ContentSection from "~/components/content-section.astro";
+import { useTranslations, asLang } from "~/i18n/utils";
+
+const t = useTranslations(asLang(Astro.currentLocale));
 ---
 
-<ContentSection title="See Payesh in Action" id="showcase">
-  <Fragment slot="lead">
-    Real <span class="text-primary">Telegram alerts</span> — exactly what
-    you'll receive when a deposit lands.
-  </Fragment>
+<ContentSection title={t("showcase.title")} id="showcase">
+  <Fragment slot="lead" set:html={t("showcase.lead")} />
 
   <div class="w-full max-w-5xl space-y-8">
     <!-- Alert Type Selector -->
     <div class="flex flex-wrap items-center justify-center gap-4">
       <button
         data-showcase-tab="deposit"
-        class="showcase-tab rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary transition-colors"
+        class="showcase-tab border-primary/30 bg-primary/10 rounded-full border px-4 py-1.5 font-semibold text-primary transition-colors text-sm"
       >
-        Deposit Alert
+        {t("showcase.tab.deposit")}
       </button>
       <button
         data-showcase-tab="daily"
-        class="showcase-tab rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-semibold text-offset transition-colors hover:border-white/20"
+        class="showcase-tab rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-semibold text-offset transition-colors text-sm hover:border-white/20"
       >
-        Daily Report
+        {t("showcase.tab.daily")}
       </button>
       <button
         data-showcase-tab="welcome"
-        class="showcase-tab rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-semibold text-offset transition-colors hover:border-white/20"
+        class="showcase-tab rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-semibold text-offset transition-colors text-sm hover:border-white/20"
       >
-        Welcome Message
+        {t("showcase.tab.welcome")}
       </button>
     </div>
 
@@ -43,17 +43,21 @@ import ContentSection from "~/components/content-section.astro";
           <div
             class="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-purple-500"
           >
-            <svg class="size-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <svg
+              class="size-5 text-white"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
               <path
                 d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
               ></path>
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-white">
-              Payesh | Crypto Deposit Monitor
+            <div class="font-bold text-white text-sm">
+              {t("showcase.bot_name")}
             </div>
-            <div class="text-xs text-gray-400">bot</div>
+            <div class="text-gray-400 text-xs">{t("showcase.bot_tag")}</div>
           </div>
         </div>
 
@@ -61,77 +65,91 @@ import ContentSection from "~/components/content-section.astro";
         <div class="space-y-3 p-4">
           <!-- Bot: Deposit Alert -->
           <div class="flex justify-start">
-            <div
-              class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#2b5278] p-4"
-            >
+            <div class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#2b5278] p-4">
               <!-- Bot name + admin badge -->
               <div class="mb-1 flex items-center gap-2">
-                <span class="text-sm font-bold text-emerald-400">
-                  Payesh Worker
+                <span class="font-bold text-emerald-400 text-sm">
+                  {t("showcase.worker")}
                 </span>
                 <span
-                  class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300"
+                  class="rounded bg-emerald-500/20 px-1.5 py-0.5 font-bold text-[10px] text-emerald-300"
                 >
-                  admin
+                  {t("showcase.admin")}
                 </span>
               </div>
               <div class="mb-2">
-                <span class="text-base font-bold text-white">
-                  &#9989; Deposit Successful
+                <span class="font-bold text-white text-base">
+                  &#9989; {t("showcase.deposit_success")}
                 </span>
                 <br />
-                <span class="text-sm text-gray-200">
-                  26.0 USDT — Completed
+                <span class="text-gray-200 text-sm">
+                  {t("showcase.deposit_amount")}
                 </span>
               </div>
-              <div class="space-y-1 text-sm text-gray-200">
+              <div class="space-y-1 text-gray-200 text-sm">
                 <p>
-                  <span class="text-gray-400">&#128230; Exchange:</span>
+                  <span class="text-gray-400"
+                    >&#128230; {t("showcase.label.exchange")}</span
+                  >
                   <span class="font-semibold text-white"> Toobit</span>
                 </p>
                 <p>
-                  <span class="text-gray-400">&#128176; Balance:</span>
+                  <span class="text-gray-400"
+                    >&#128176; {t("showcase.label.balance")}</span
+                  >
                   <span class="font-semibold text-white">
-                    3,120.19 USDT
+                    {t("showcase.val.balance")}
                   </span>
                 </p>
                 <p>
-                  <span class="text-gray-400">&#127760; Network:</span>
+                  <span class="text-gray-400"
+                    >&#127760; {t("showcase.label.network")}</span
+                  >
                   <span class="font-semibold text-white"> BSC</span>
                 </p>
                 <p>
-                  <span class="text-gray-400">&#128197; Date:</span>
+                  <span class="text-gray-400"
+                    >&#128197; {t("showcase.label.date")}</span
+                  >
                   <span class="font-semibold text-white">
-                    2026-07-11 01:06:43
+                    {t("showcase.val.date")}
                   </span>
                 </p>
               </div>
-              <div class="mt-2 space-y-1 border-t border-white/10 pt-2 text-sm text-gray-200">
+              <div
+                class="mt-2 space-y-1 border-t border-white/10 pt-2 text-gray-200 text-sm"
+              >
                 <p>
-                  <span class="text-gray-400">&#128232; To:</span>
+                  <span class="text-gray-400"
+                    >&#128232; {t("showcase.label.to")}</span
+                  >
                 </p>
                 <p
-                  class="break-all font-mono text-[11px] leading-tight text-gray-300"
+                  class="break-all font-mono leading-tight text-[11px] text-gray-300"
                 >
                   0x5ce638e926eca68e76464c10d80dbf56f6fba60c
                 </p>
                 <p class="mt-1">
-                  <span class="text-gray-400">&#128232; From:</span>
+                  <span class="text-gray-400"
+                    >&#128232; {t("showcase.label.from")}</span
+                  >
                 </p>
                 <p
-                  class="break-all font-mono text-[11px] leading-tight text-gray-300"
+                  class="break-all font-mono leading-tight text-[11px] text-gray-300"
                 >
                   0xe2fc31f816a9b94326492132018c3aecc4a93ae1
                 </p>
               </div>
               <div
-                class="mt-2 border-t border-white/10 pt-2 text-sm text-gray-200"
+                class="mt-2 border-t border-white/10 pt-2 text-gray-200 text-sm"
               >
                 <p>
-                  <span class="text-gray-400">&#128279; TxID:</span>
+                  <span class="text-gray-400"
+                    >&#128279; {t("showcase.label.txid")}</span
+                  >
                 </p>
                 <p
-                  class="break-all font-mono text-[11px] leading-tight text-gray-300"
+                  class="break-all font-mono leading-tight text-[11px] text-gray-300"
                 >
                   0x2e9cdaf7aed00914bb5e2d8d6da456c71d3f3c36a8815aeb0dd1a771f0f6aca8
                 </p>
@@ -157,17 +175,21 @@ import ContentSection from "~/components/content-section.astro";
           <div
             class="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-purple-500"
           >
-            <svg class="size-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <svg
+              class="size-5 text-white"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
               <path
                 d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
               ></path>
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-white">
-              Payesh | Crypto Deposit Monitor
+            <div class="font-bold text-white text-sm">
+              {t("showcase.bot_name")}
             </div>
-            <div class="text-xs text-gray-400">bot</div>
+            <div class="text-gray-400 text-xs">{t("showcase.bot_tag")}</div>
           </div>
         </div>
 
@@ -176,45 +198,45 @@ import ContentSection from "~/components/content-section.astro";
           <!-- User clicks Report -->
           <div class="flex justify-end">
             <div
-              class="rounded-2xl rounded-tr-sm bg-[#2b5278] px-4 py-2 text-sm font-semibold text-white"
+              class="rounded-2xl rounded-tr-sm bg-[#2b5278] px-4 py-2 font-semibold text-white text-sm"
             >
-              &#128202; Report
+              &#128202; {t("showcase.report_btn")}
             </div>
           </div>
 
           <!-- Bot: Generate Report prompt -->
           <div class="flex justify-start">
-            <div
-              class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#2b5278] p-4"
-            >
+            <div class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#2b5278] p-4">
               <div class="mb-2 flex items-center gap-2">
                 <span class="text-lg">&#128202;</span>
-                <span class="font-bold text-white">Generate Report</span>
+                <span class="font-bold text-white"
+                  >{t("showcase.generate_report")}</span
+                >
               </div>
-              <p class="mb-3 text-sm text-gray-200">
-                Select the timeframe for your report:
+              <p class="mb-3 text-gray-200 text-sm">
+                {t("showcase.select_timeframe")}
               </p>
               <!-- Inline keyboard buttons -->
               <div class="space-y-1.5">
                 <div
-                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:border-white/20"
+                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center font-medium text-white transition-colors text-sm hover:border-white/20"
                 >
-                  &#128202; Daily Report
+                  &#128202; {t("showcase.daily_report")}
                 </div>
                 <div
-                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:border-white/20"
+                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center font-medium text-white transition-colors text-sm hover:border-white/20"
                 >
-                  &#128202; Weekly Report
+                  &#128202; {t("showcase.weekly_report")}
                 </div>
                 <div
-                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:border-white/20"
+                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center font-medium text-white transition-colors text-sm hover:border-white/20"
                 >
-                  &#128202; Monthly Report
+                  &#128202; {t("showcase.monthly_report")}
                 </div>
                 <div
-                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center text-sm font-medium text-gray-400 transition-colors hover:border-white/20"
+                  class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-4 py-2 text-center font-medium text-gray-400 transition-colors text-sm hover:border-white/20"
                 >
-                  &lsaquo; Back
+                  &lsaquo; {t("showcase.back")}
                 </div>
               </div>
             </div>
@@ -238,17 +260,21 @@ import ContentSection from "~/components/content-section.astro";
           <div
             class="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-purple-500"
           >
-            <svg class="size-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+            <svg
+              class="size-5 text-white"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
               <path
                 d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
               ></path>
             </svg>
           </div>
           <div>
-            <div class="font-bold text-sm text-white">
-              Payesh | Crypto Deposit Monitor
+            <div class="font-bold text-white text-sm">
+              {t("showcase.bot_name")}
             </div>
-            <div class="text-xs text-gray-400">bot</div>
+            <div class="text-gray-400 text-xs">{t("showcase.bot_tag")}</div>
           </div>
         </div>
 
@@ -257,7 +283,7 @@ import ContentSection from "~/components/content-section.astro";
           <!-- User sends /start -->
           <div class="flex justify-end">
             <div
-              class="rounded-2xl rounded-tr-sm bg-[#2b5278] px-4 py-2 text-sm font-semibold text-white"
+              class="rounded-2xl rounded-tr-sm bg-[#2b5278] px-4 py-2 font-semibold text-white text-sm"
             >
               /start
             </div>
@@ -265,36 +291,38 @@ import ContentSection from "~/components/content-section.astro";
 
           <!-- Bot: Welcome message -->
           <div class="flex justify-start">
-            <div
-              class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#2b5278] p-4"
-            >
+            <div class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#2b5278] p-4">
               <div class="mb-2">
-                <span class="text-base font-bold text-white">
-                  &#128075; Hello, Parham
+                <span class="font-bold text-white text-base">
+                  &#128075; {t("showcase.hello")}
                 </span>
                 <br />
-                <span class="text-sm text-gray-200">
-                  Welcome to Payesh!
+                <span class="text-gray-200 text-sm">
+                  {t("showcase.welcome_to")}
                 </span>
               </div>
-              <div class="space-y-1 text-sm text-gray-200">
+              <div class="space-y-1 text-gray-200 text-sm">
                 <p>
                   &#128680;
-                  <span class="font-bold text-white">Status:</span>
-                  <span class="ml-1 font-semibold text-emerald-400">
-                    &#128994; Active
+                  <span class="font-bold text-white"
+                    >{t("showcase.status_label")}</span
+                  >
+                  <span class="mx-1 font-semibold text-emerald-400">
+                    &#128994; {t("showcase.status_active")}
                   </span>
                 </p>
                 <p>
                   &#128337;
-                  <span class="font-bold text-white">Subscription:</span>
-                  <span class="ml-1 font-semibold text-white">
-                    1 Days Left
+                  <span class="font-bold text-white"
+                    >{t("showcase.subscription_label")}</span
+                  >
+                  <span class="mx-1 font-semibold text-white">
+                    {t("showcase.days_left")}
                   </span>
                 </p>
               </div>
-              <p class="mt-2 text-sm text-gray-200">
-                What would you like to do?
+              <p class="mt-2 text-gray-200 text-sm">
+                {t("showcase.what_do")}
               </p>
             </div>
           </div>
@@ -302,48 +330,47 @@ import ContentSection from "~/components/content-section.astro";
           <!-- Menu buttons (reply keyboard) -->
           <div class="flex flex-wrap justify-center gap-1.5 pt-1">
             <div
-              class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-full rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#128279; Connect Exchange
+              &#128279; {t("showcase.menu.connect")}
             </div>
             <div
-              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#128203; My Exchanges
+              &#128203; {t("showcase.menu.my_exchanges")}
             </div>
             <div
-              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#128179; Subscription
+              &#128179; {t("showcase.menu.subscription")}
             </div>
             <div
-              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#9881;&#65039; Settings
+              &#9881;&#65039; {t("showcase.menu.settings")}
             </div>
             <div
-              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#128202; Report
+              &#128202; {t("showcase.menu.report")}
             </div>
             <div
-              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#127873; Free Trial
+              &#127873; {t("showcase.menu.free_trial")}
             </div>
             <div
-              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center text-xs font-medium text-white"
+              class="w-[calc(50%-3px)] rounded-lg border border-white/10 bg-[#1f2936] px-3 py-2 text-center font-medium text-white text-xs"
             >
-              &#128172; Support
+              &#128172; {t("showcase.menu.support")}
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <p class="text-center text-sm text-offset">
-      All alerts include full transaction details, TxID links, and USDT
-      conversion values.
+    <p class="text-center text-offset text-sm">
+      {t("showcase.caption")}
     </p>
   </div>
 </ContentSection>

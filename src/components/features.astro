@@ -1,49 +1,23 @@
 ---
 import ContentSection from "~/components/content-section.astro";
+import { useTranslations, asLang } from "~/i18n/utils";
+
+const t = useTranslations(asLang(Astro.currentLocale));
 
 const features = [
-  {
-    title: "Multi-Exchange Monitoring",
-    description:
-      "Watch Binance, KuCoin, Toobit, and BingX simultaneously from a single Telegram bot.",
-    icon: "monitor",
-    color: "from-emerald-500 to-teal-500",
-  },
-  {
-    title: "Instant Alerts",
-    description:
-      "Real-time HTML-formatted Telegram alerts the second a deposit lands in your account.",
-    icon: "alert",
-    color: "from-violet-500 to-purple-500",
-  },
-  {
-    title: "Smart Reports",
-    description:
-      "Daily, weekly, and monthly reports with live USDT value conversion for all deposits.",
-    icon: "report",
-    color: "from-cyan-500 to-blue-500",
-  },
-  {
-    title: "Guaranteed Security",
-    description:
-      "100% secure. Uses read-only API keys. We never ask for withdrawal permissions.",
-    icon: "shield",
-    color: "from-amber-500 to-orange-500",
-  },
+  { id: "f1", icon: "monitor", color: "from-emerald-500 to-teal-500" },
+  { id: "f2", icon: "alert", color: "from-violet-500 to-purple-500" },
+  { id: "f3", icon: "report", color: "from-cyan-500 to-blue-500" },
+  { id: "f4", icon: "shield", color: "from-amber-500 to-orange-500" },
 ];
 ---
 
-<ContentSection title="Features" id="features">
-  <Fragment slot="lead">
-    Everything you need to monitor your crypto deposits.
-    <span class="text-primary">Real-time</span>,
-    <span class="text-primary">secure</span>, and
-    <span class="text-primary">Telegram-native</span>.
-  </Fragment>
+<ContentSection title={t("features.title")} id="features">
+  <Fragment slot="lead" set:html={t("features.lead")} />
   <ul class="grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
     {
-      features.map(({ title, description, icon, color }) => (
-        <li class="glow-card group p-8 transition-all duration-300 hover:border-primary/20">
+      features.map(({ id, icon, color }) => (
+        <li class="glow-card hover:border-primary/20 group p-8 transition-all duration-300">
           <div class="mb-4 flex items-center gap-4">
             <div
               class={`flex size-12 items-center justify-center rounded-xl bg-gradient-to-br ${color} p-2.5`}
@@ -109,9 +83,9 @@ const features = [
                 </svg>
               )}
             </div>
-            <h3 class="font-extrabold text-xl">{title}</h3>
+            <h3 class="font-extrabold text-xl">{t(`features.${id}.title`)}</h3>
           </div>
-          <p class="leading-relaxed text-offset">{description}</p>
+          <p class="leading-relaxed text-offset">{t(`features.${id}.desc`)}</p>
         </li>
       ))
     }

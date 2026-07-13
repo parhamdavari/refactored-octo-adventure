@@ -127,3 +127,6 @@ Thumbs.db
 docs/
 .vscode/
 sc/
+
+# Cloudflare Wrangler local state
+.wrangler/

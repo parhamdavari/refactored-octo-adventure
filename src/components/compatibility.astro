@@ -1,5 +1,8 @@
 ---
 import ContentSection from "~/components/content-section.astro";
+import { useTranslations, asLang } from "~/i18n/utils";
+
+const t = useTranslations(asLang(Astro.currentLocale));
 
 // Added 'icon' paths. Make sure these match the exact filenames
 // and extensions (.svg, .png, etc.) you have in your public/ folder.
@@ -16,18 +19,15 @@ const networks = [
 ];
 ---
 
-<ContentSection title="Supported Exchanges & Networks" id="compatibility">
-  <Fragment slot="lead">
-    Connect to <span class="text-primary">major exchanges</span> and monitor deposits
-    across <span class="text-primary">popular networks</span>.
-  </Fragment>
+<ContentSection title={t("compatibility.title")} id="compatibility">
+  <Fragment slot="lead" set:html={t("compatibility.lead")} />
 
   <div class="w-full max-w-5xl space-y-8">
     <div class="glow-card p-8">
       <h3
         class="mb-6 text-center font-extrabold uppercase tracking-widest text-offset text-sm"
       >
-        Supported Exchanges
+        {t("compatibility.exchanges_heading")}
       </h3>
       <ul class="grid grid-cols-2 gap-6 md:grid-cols-4">
         {
@@ -52,7 +52,7 @@ const networks = [
       <h3
         class="mb-6 text-center font-extrabold uppercase tracking-widest text-offset text-sm"
       >
-        Supported Networks
+        {t("compatibility.networks_heading")}
       </h3>
       <ul class="flex flex-wrap items-center justify-center gap-8">
         {

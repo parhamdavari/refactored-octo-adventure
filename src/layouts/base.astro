@@ -1,0 +1,76 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/vazirmatn";
+import "~/styles/index.css";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Compatibility from "~/components/compatibility.astro";
+import Features from "~/components/features.astro";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import Pricing from "~/components/pricing.astro";
+import Showcase from "~/components/showcase.astro";
+import Splash from "~/components/splash.astro";
+import Tutorial from "~/components/tutorial.astro";
+import { useTranslations } from "~/i18n/utils";
+import type { Lang } from "~/i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dir = lang === "fa" ? "rtl" : "ltr";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+
+const enUrl = new URL(getRelativeLocaleUrl("en", "/"), site).href;
+const faUrl = new URL(getRelativeLocaleUrl("fa", "/"), site).href;
+const canonical = lang === "fa" ? faUrl : enUrl;
+const ogLocale = lang === "fa" ? "fa_IR" : "en_US";
+---
+
+<!doctype html>
+<html
+  lang={lang}
+  dir={dir}
+  class="h-full motion-safe:scroll-smooth"
+  data-theme="dark"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+
+    <title>{t("meta.title")}</title>
+    <meta name="description" content={t("meta.description")} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="fa" href={faUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+
+    <meta property="og:title" content="Payesh" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={t("meta.description")} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body
+    class="selection:bg-primary/30 h-full overflow-x-hidden bg-default text-default text-base selection:text-white"
+  >
+    <Header />
+    <Splash />
+    <div class="space-y-24 px-8 py-32">
+      <Features />
+      <Tutorial />
+      <Compatibility />
+      <Showcase />
+      <Pricing />
+    </div>
+    <Footer />
+  </body>
+</html>

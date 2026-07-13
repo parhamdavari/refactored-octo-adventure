@@ -1,0 +1,42 @@
+---
+import { useTranslations, asLang, getLocalizedUrl } from "~/i18n/utils";
+
+const lang = asLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const other = lang === "fa" ? "en" : "fa";
+const href = getLocalizedUrl(other, "/");
+---
+
+<a
+  href={href}
+  data-lang-switch={other}
+  class="lang-switch inline-flex items-center gap-1.5 font-semibold text-sm"
+  hreflang={other}
+>
+  <svg
+    class="size-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M2 12h20"></path>
+    <path
+      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+    ></path>
+  </svg>
+  {t("switcher.other")}
+</a>
+
+<script>
+  // Persist an explicit language choice so the geo Worker doesn't override it.
+  document.querySelectorAll<HTMLAnchorElement>(".lang-switch").forEach((el) => {
+    el.addEventListener("click", () => {
+      const lang = el.dataset.langSwitch;
+      document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
+    });
+  });
+</script>

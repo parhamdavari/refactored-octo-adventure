@@ -1,4 +1,11 @@
 ---
+import { useTranslations, asLang, toFaDigits } from "~/i18n/utils";
+
+const lang = asLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+const yearStr = lang === "fa" ? toFaDigits(year) : String(year);
+
 const socialLinks = [
   {
     url: "https://t.me/PayeshBot",
@@ -24,7 +31,8 @@ const socialLinks = [
           PAYESH
         </span> -->
         <span class="text-offset text-sm">
-          &copy; {new Date().getFullYear()} Payesh. All rights reserved.
+          &copy; {yearStr}
+          {t("footer.brand")}. {t("footer.rights")}
         </span>
       </div>
 

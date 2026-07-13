@@ -193,7 +193,7 @@ export const ui = {
     "header.close_label": "بستن منو",
 
     // splash
-    "splash.line1": "رصد لحظه‌ای",
+    "splash.line1": "رصد هوشمند",
     "splash.line2": "واریز رمزارز",
     "splash.line3": "در تلگرام",
     "splash.whale_alt": "لوگوی هندسی نهنگ پایش با آیکون‌های شناور رمزارز",

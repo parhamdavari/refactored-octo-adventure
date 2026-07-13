@@ -172,8 +172,7 @@ export const ui = {
     "footer.rights": "All rights reserved.",
 
     // language switcher
-    "switcher.label": "EN",
-    "switcher.other": "فارسی",
+    "switcher.aria": "Switch to Persian",
   },
   fa: {
     // meta
@@ -335,7 +334,6 @@ export const ui = {
     "footer.rights": "تمامی حقوق محفوظ است.",
 
     // language switcher
-    "switcher.label": "فارسی",
-    "switcher.other": "English",
+    "switcher.aria": "تغییر به انگلیسی",
   },
 } satisfies Record<Lang, Record<string, string>>;
